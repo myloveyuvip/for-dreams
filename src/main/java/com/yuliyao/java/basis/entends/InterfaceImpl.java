@@ -1,4 +1,4 @@
-package com.yuliyao.java.entends;
+package com.yuliyao.java.basis.entends;
 
 /**
  * @author YuLiyao
@@ -9,7 +9,7 @@ public class InterfaceImpl implements InterfaceExample {
     public static void main(String[] args) {
         InterfaceImpl anInterface = new InterfaceImpl();
         System.out.println(anInterface.getI());
-        System.out.println(InterfaceImpl.i);
+        System.out.println(i);
 
 
     }

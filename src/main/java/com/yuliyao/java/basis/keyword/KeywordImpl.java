@@ -1,4 +1,4 @@
-package com.yuliyao.java.keyword;
+package com.yuliyao.java.basis.keyword;
 
 /**
  * @author YuLiyao

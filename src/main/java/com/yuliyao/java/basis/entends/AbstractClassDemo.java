@@ -1,4 +1,4 @@
-package com.yuliyao.java.entends;
+package com.yuliyao.java.basis.entends;
 
 /**
  * @author YuLiyao

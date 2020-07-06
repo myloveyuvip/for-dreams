@@ -1,8 +1,6 @@
-package com.yuliyao.java.oper;
+package com.yuliyao.java.basis.oper;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author YuLiyao

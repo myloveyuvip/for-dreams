@@ -1,15 +1,14 @@
 package com.yuliyao.java.container;
 
-import java.util.Vector;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author YuLiyao
  * @date 2020/7/6
  */
-public class VectorDemo implements Runnable {
+public class CopyOnWriteArrayListDemo implements Runnable {
 
-    private Vector<String> list = new Vector<>();
+    private CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
 
 
     @Override
@@ -23,7 +22,7 @@ public class VectorDemo implements Runnable {
     }
 
     public static void main(String[] args) {
-        VectorDemo demo = new VectorDemo();
+        CopyOnWriteArrayListDemo demo = new CopyOnWriteArrayListDemo();
         for (int i = 0; i < 1; i++) {
             demo.getList().add(i + "");
 
@@ -37,11 +36,11 @@ public class VectorDemo implements Runnable {
 
     }
 
-    public Vector<String> getList() {
+    public CopyOnWriteArrayList getList() {
         return list;
     }
 
-    public void setList(Vector<String> list) {
+    public void setList(CopyOnWriteArrayList list) {
         this.list = list;
     }
 }
