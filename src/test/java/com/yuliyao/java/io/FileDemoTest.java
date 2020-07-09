@@ -2,6 +2,7 @@ package com.yuliyao.java.io;
 
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -32,5 +33,14 @@ public class FileDemoTest {
     @Test
     public void copyFileWithBuffer() throws IOException {
         fileDemo.copyFileWithBuffer("F:\\test\\test.txt","F:\\test\\test_copy.txt");
+    }
+
+    @Test
+    public void listFilesWithoutRecursive() {
+    }
+
+    @Test
+    public void testInputStream() throws FileNotFoundException {
+        fileDemo.testInputStream();
     }
 }

@@ -97,4 +97,21 @@ public class FileDemo {
         bos.close();
     }
 
+    /**
+     * 验证new FileInputStream时是否已经将整个文件载入内存中
+     */
+    public void testInputStream() throws FileNotFoundException {
+        long l1 = System.nanoTime();
+        FileInputStream fileInputStream = new FileInputStream("F:\\test\\test.txt");
+        long l2 = System.nanoTime();
+
+        System.out.println("读小文件耗时：" + (l2 - l1));
+        new FileInputStream("F:\\BaiduNetdiskDownload\\MATLAB-R2017a\\R2017a_win64_dvd1.iso");
+
+        System.out.println("读大文件耗时：" + (System.nanoTime() - l2));
+
+
+
+    }
+
 }
