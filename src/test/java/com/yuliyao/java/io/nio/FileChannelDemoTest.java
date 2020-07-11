@@ -17,7 +17,8 @@ public class FileChannelDemoTest {
 
     @Test
     public void fastCopy() throws IOException {
-        channelDemo.fastCopy("/Users/yuliyao/Movies/test.txt","/Users/yuliyao/Movies/test2.txt");
+//        channelDemo.fastCopy("/Users/yuliyao/Movies/test.txt","/Users/yuliyao/Movies/test2.txt");
+        channelDemo.fastCopy("F:\\test\\test.txt","F:\\test\\test_channel.txt");
 
 
     }
