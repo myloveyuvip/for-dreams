@@ -1,8 +1,8 @@
 package com.yuliyao.designp;
 
+import com.yuliyao.designp.oop.LspDemo;
+import com.yuliyao.designp.oop.LspParent;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author YuLiyao
@@ -19,7 +19,7 @@ public class LspDemoTest {
         /*String foo = lspDemo.foo;
         System.out.println(foo);*/
         LspParent parent = lspDemo;
-        System.out.println(parent.foo);
+//        System.out.println(parent.foo);
     }
 
 }

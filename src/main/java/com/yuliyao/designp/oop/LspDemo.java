@@ -1,4 +1,4 @@
-package com.yuliyao.designp;
+package com.yuliyao.designp.oop;
 
 /**
  * 里氏替换原则：子类对象必须能够替换掉所有父类对象。
