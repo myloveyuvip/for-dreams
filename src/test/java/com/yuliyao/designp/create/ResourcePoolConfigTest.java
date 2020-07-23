@@ -1,9 +1,6 @@
 package com.yuliyao.designp.create;
 
-import com.alibaba.fastjson.JSON;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author YuLiyao
@@ -14,7 +11,13 @@ public class ResourcePoolConfigTest {
     @Test
     public void createPool() {
         ResourcePoolConfig threadPool = new ResourcePoolConfig.Builder().name("threadPool").maxIdle(10).build();
-        System.out.println(JSON.toJSONString(threadPool));
+        System.out.println(threadPool);
+    }
+
+    @Test
+    public void createByMethod() {
+        ResourcePoolConfig threadPool = ResourcePoolConfig.builder().name("threadPool").maxIdle(10).build();
+        System.out.println(threadPool);
     }
 
 }

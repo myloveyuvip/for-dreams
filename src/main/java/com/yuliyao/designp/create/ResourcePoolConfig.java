@@ -27,6 +27,10 @@ public class ResourcePoolConfig {
         this.minIdle = builder.minIdle;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
 
 
     public static class Builder{
@@ -76,8 +80,18 @@ public class ResourcePoolConfig {
             if (this.maxTotal <= 0) {
                 this.maxTotal = this.MAX_TOTAL;
             }
+            //这里可以继续添加业务逻辑判断
             return new ResourcePoolConfig(this);
         }
     }
 
+    @Override
+    public String toString() {
+        return "ResourcePoolConfig{" +
+                "name='" + name + '\'' +
+                ", maxTotal=" + maxTotal +
+                ", maxIdle=" + maxIdle +
+                ", minIdle=" + minIdle +
+                '}';
+    }
 }
