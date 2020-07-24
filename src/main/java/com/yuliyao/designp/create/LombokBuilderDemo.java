@@ -22,7 +22,4 @@ public class LombokBuilderDemo {
 
     private int minIdle;
 
-    public void test() {
-        log.debug();
-    }
 }
