@@ -9,8 +9,9 @@ import java.util.concurrent.CompletableFuture;
 public class CompletableFutureDemo {
 
     public void cookeTea() {
-        CompletableFuture<Object> f1 = CompletableFuture.supplyAsync(()->{System.out.println("洗水壶，耗时1分钟"+System
-                .currentTimeMillis()/1000);
+        CompletableFuture<Object> f1 = CompletableFuture.supplyAsync(() -> {
+            System.out.println("洗水壶，耗时1分钟" + System
+                    .currentTimeMillis() / 1000);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
