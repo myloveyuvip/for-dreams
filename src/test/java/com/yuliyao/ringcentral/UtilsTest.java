@@ -166,9 +166,47 @@ public class UtilsTest {
 
     @Test
     public void maxByQuarter() {
+        List<SaleItem> saleItems = new ArrayList<>();
+        for (int i = 0; i < 12; i++) {
+            saleItems.add(SaleItem.builder().month(i).saleNumbers(100 * (i+1)).build());
+        }
+
+        List<QuarterSalesItem> quarterSalesItems = Utils.maxByQuarter(saleItems);
+        ImmutableMap<Integer, Double> resultMap = ImmutableMap.of(0, 300d, 1, 600d, 2, 900d, 3, 1200d);
+        for (QuarterSalesItem quarterSalesItem : quarterSalesItems) {
+            Assert.assertEquals(resultMap.get(quarterSalesItem.getQuarter()), (Double)quarterSalesItem.getValue());
+        }
     }
+
+
 
     @Test
     public void getUnUsedKeys() {
+
+        int[] allKeys = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] usedKeys = {2, 3, 4};
+        int[] unUsedKeys = Utils.getUnUsedKeys(allKeys, usedKeys);
+        Assert.assertArrayEquals(unUsedKeys, new int[]{0, 1, 5, 6, 7, 8, 9});
+
+    }
+
+    @Test
+    public void getUnUsedKeys_unsort() {
+
+        int[] allKeys = {8, 1, 6, 3, 5, 4, 2, 7, 0, 9};
+        int[] usedKeys = {3, 2, 4};
+        int[] unUsedKeys = Utils.getUnUsedKeys(allKeys, usedKeys);
+        Assert.assertArrayEquals(unUsedKeys, new int[]{0, 1, 5, 6, 7, 8, 9});
+
+    }
+
+    @Test
+    public void getUnUsedKeys_duplicateKey() {
+
+        int[] allKeys = {8, 8,1,1,1 ,6, 3, 5, 4, 2,2, 7, 0, 9};
+        int[] usedKeys = {3,3, 2, 4};
+        int[] unUsedKeys = Utils.getUnUsedKeys(allKeys, usedKeys);
+        Assert.assertArrayEquals(unUsedKeys, new int[]{0, 1, 5, 6, 7, 8, 9});
+
     }
 }

@@ -3,6 +3,7 @@ package com.yuliyao.ringcentral;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Utils {
 
@@ -60,38 +61,15 @@ public class Utils {
             return Collections.EMPTY_LIST;
         }
 
-        Map<Integer, Double> quarterSaleMap = sumByMonths(saleItems, 3);
+        SumSalesStatistics sumSalesStatistics = new SumSalesStatistics();
+        Map<Integer, Double> quarterSaleSumMap = sumSalesStatistics.statisticByQuarter(saleItems);
 
 
-        quarterSaleMap.entrySet().forEach(entry -> result.add(new QuarterSalesItem(entry.getKey(), entry.getValue())));
+        quarterSaleSumMap.entrySet().forEach(entry -> result.add(new QuarterSalesItem(entry.getKey(), entry.getValue())));
 
         return result;
     }
 
-
-    /**
-     * sum all sales items by every months
-     *
-     * @param saleItems
-     * @param months
-     * @return
-     */
-    private static Map<Integer, Double> sumByMonths(List<SaleItem> saleItems, int months) {
-        Map<Integer, Double> result = new HashMap<>(16);
-        for (SaleItem saleItem : saleItems) {
-            int everyMonths = saleItem.getMonth() / months;
-
-            result.putIfAbsent(everyMonths, 0d);
-
-            Double everyMonthsSales;
-            if ((everyMonthsSales = result.get(everyMonths) + saleItem.getSaleNumbers()) > Double.MAX_VALUE) {
-                throw new IllegalArgumentException("Overflow occured");
-            }
-
-            result.put(everyMonths, everyMonthsSales);
-        }
-        return result;
-    }
 
     /**
      * max all sales items by quarter
@@ -99,10 +77,22 @@ public class Utils {
      * @return
      */
     public static List<QuarterSalesItem> maxByQuarter(List<SaleItem> saleItems) {
-        return null;
-    }
 
-    //Question5
+        List<QuarterSalesItem> result = new ArrayList<>();
+
+        if (CollectionUtils.isEmpty(saleItems)) {
+            return Collections.EMPTY_LIST;
+        }
+
+        MaxSalesStatistics maxSalesStatistics = new MaxSalesStatistics();
+        Map<Integer, Double> quarterSaleMaxMap = maxSalesStatistics.statisticByQuarter(saleItems);
+
+
+        quarterSaleMaxMap.entrySet().forEach(entry -> result.add(new QuarterSalesItem(entry.getKey(), entry.getValue())));
+
+        return result;
+
+    }
 
     /**
      * We have all Keys: 0-9;
@@ -111,7 +101,25 @@ public class Utils {
      */
 
     public static int[] getUnUsedKeys(int[] allKeys, int[] usedKeys) {
-        return null;
+        //check params
+        if (allKeys == null || allKeys.length == 0) {
+            return new int[0];
+        }
+
+        if (usedKeys == null || usedKeys.length == 0) {
+            return allKeys;
+        }
+
+        Set<Integer> set = Arrays.stream(allKeys).boxed().collect(Collectors.toSet());
+        for (int usedKey : usedKeys) {
+            if (set.contains(usedKey)) {
+                set.remove(usedKey);
+            } else {
+                set.add(usedKey);
+            }
+        }
+
+        return set.stream().mapToInt(Integer::intValue).toArray();
     }
 
 }
