@@ -88,7 +88,6 @@ public class UtilsTest {
     }
 
 
-
     @Test
     public void sortByExtType() {
         Extension extension1 = Extension.builder().extType("AO").build();
@@ -114,7 +113,7 @@ public class UtilsTest {
         Extension extension6 = Extension.builder().build();
         Extension extension7 = Extension.builder().extType("Dept").build();
         List<Extension> extensions = Utils.sortByExtType(Arrays.asList(extension1, extension2, extension3,
-                extension4, extension5,extension6,extension7));
+                extension4, extension5, extension6, extension7));
         Assert.assertEquals("User", extensions.get(0).getExtType());
         Assert.assertEquals("Dept", extensions.get(1).getExtType());
         Assert.assertEquals("AO", extensions.get(2).getExtType());
@@ -129,13 +128,13 @@ public class UtilsTest {
 
         List<SaleItem> saleItems = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
-            saleItems.add(SaleItem.builder().month(i).saleNumbers(100 * (i+1)).build());
+            saleItems.add(SaleItem.builder().month(i).saleNumbers(100 * (i + 1)).build());
         }
 
         List<QuarterSalesItem> quarterSalesItems = Utils.sumByQuarter(saleItems);
         ImmutableMap<Integer, Double> resultMap = ImmutableMap.of(0, 600d, 1, 1500d, 2, 2400d, 3, 3300d);
         for (QuarterSalesItem quarterSalesItem : quarterSalesItems) {
-            Assert.assertEquals(resultMap.get(quarterSalesItem.getQuarter()), (Double)quarterSalesItem.getValue());
+            Assert.assertEquals(resultMap.get(quarterSalesItem.getQuarter()), (Double) quarterSalesItem.getValue());
         }
     }
 
@@ -154,13 +153,13 @@ public class UtilsTest {
 
         List<SaleItem> saleItems = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
-            saleItems.add(SaleItem.builder().month(i).saleNumbers(-100 * (i+1)).build());
+            saleItems.add(SaleItem.builder().month(i).saleNumbers(-100 * (i + 1)).build());
         }
 
         List<QuarterSalesItem> quarterSalesItems = Utils.sumByQuarter(saleItems);
         ImmutableMap<Integer, Double> resultMap = ImmutableMap.of(0, -600d, 1, -1500d, 2, -2400d, 3, -3300d);
         for (QuarterSalesItem quarterSalesItem : quarterSalesItems) {
-            Assert.assertEquals(resultMap.get(quarterSalesItem.getQuarter()), (Double)quarterSalesItem.getValue());
+            Assert.assertEquals(resultMap.get(quarterSalesItem.getQuarter()), (Double) quarterSalesItem.getValue());
         }
     }
 
@@ -168,16 +167,15 @@ public class UtilsTest {
     public void maxByQuarter() {
         List<SaleItem> saleItems = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
-            saleItems.add(SaleItem.builder().month(i).saleNumbers(100 * (i+1)).build());
+            saleItems.add(SaleItem.builder().month(i).saleNumbers(100 * (i + 1)).build());
         }
 
         List<QuarterSalesItem> quarterSalesItems = Utils.maxByQuarter(saleItems);
         ImmutableMap<Integer, Double> resultMap = ImmutableMap.of(0, 300d, 1, 600d, 2, 900d, 3, 1200d);
         for (QuarterSalesItem quarterSalesItem : quarterSalesItems) {
-            Assert.assertEquals(resultMap.get(quarterSalesItem.getQuarter()), (Double)quarterSalesItem.getValue());
+            Assert.assertEquals(resultMap.get(quarterSalesItem.getQuarter()), (Double) quarterSalesItem.getValue());
         }
     }
-
 
 
     @Test
@@ -203,8 +201,8 @@ public class UtilsTest {
     @Test
     public void getUnUsedKeys_duplicateKey() {
 
-        int[] allKeys = {8, 8,1,1,1 ,6, 3, 5, 4, 2,2, 7, 0, 9};
-        int[] usedKeys = {3,3, 2, 4};
+        int[] allKeys = {8, 8, 1, 1, 1, 6, 3, 5, 4, 2, 2, 7, 0, 9};
+        int[] usedKeys = {3, 3, 2, 4};
         int[] unUsedKeys = Utils.getUnUsedKeys(allKeys, usedKeys);
         Assert.assertArrayEquals(unUsedKeys, new int[]{0, 1, 5, 6, 7, 8, 9});
 
