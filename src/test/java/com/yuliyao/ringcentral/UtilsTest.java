@@ -25,6 +25,7 @@ public class UtilsTest {
         Assert.assertEquals("ab", extensions.get(1).getFirstName());
         Assert.assertEquals("ba", extensions.get(2).getFirstName());
         Assert.assertEquals("ca", extensions.get(3).getFirstName());
+
     }
 
     @Test
